@@ -4,7 +4,7 @@ from time import sleep
 import netifaces
 
 def check():
-    flag = input('Sure? y/n')
+    flag = input('Sure? y/n: ')
     if flag == 'y' or flag == 'yes':
         return True
     elif flag == 'no' or flag == 'n':
@@ -15,8 +15,8 @@ def check():
         exit()
 
 def get_mac():
-    mac1 = [0x00, 0x16, 0x3e,
-            random.randint(0x00, 0x7f),
+    mac1 = [random.randint(0x00, 0xff), random.randint(0x00, 0xff), random.randint(0x00, 0xff),
+            random.randint(0x00, 0xff),
             random.randint(0x00, 0xff),
             random.randint(0x00, 0xff)]
     return ':'.join(map(lambda x: "%02x" % x, mac1))
